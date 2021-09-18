@@ -38,7 +38,7 @@
            {% for item in menu %}
             <li {% if loop.index==0 %}class="" {% endif %} {% if item.children|length>0 %}class="dropdown"{% endif %}>
             {% if item.children|length>0 %}
-            <a href="show_category.php?id={{ item.id }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ item.label }}<span class="caret"></span></a>
+            <a href="{% if item.permalink!='' %}./category/{{ item.permalink }}{% else %}./category/{{ item.id }}{% endif %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ item.label }}<span class="caret"></span></a>
             {% else %}
             <a href="{% if item.permalink!='' %}./category/{{ item.permalink }}{% else %}./category/{{ item.id }}{% endif %}">{{ item.label }}</a>
             {% endif %}
